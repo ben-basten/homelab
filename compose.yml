@@ -7,6 +7,7 @@ services:
       - './homeassistant/config:/config'
       - /etc/localtime:/etc/localtime:ro
     devices:
+      # Passing through Zigbee receiver into Docker container
       - /dev/ttyACM0:/dev/ttyUSB0
     restart: unless-stopped
     privileged: false
