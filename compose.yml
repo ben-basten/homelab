@@ -4,7 +4,7 @@ services:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:2023.2"
     volumes:
-      - './homeassistant/config:/config'
+      - './mount/homeassistant/config:/config'
       - /etc/localtime:/etc/localtime:ro
     devices:
       # Passing through Zigbee receiver into Docker container
@@ -27,6 +27,6 @@ services:
     env_file:
       - pihole.env
     volumes:
-      - './pihole/etc-pihole:/etc/pihole'
-      - './pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+      - './mount/pihole/etc-pihole:/etc/pihole'
+      - './mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
     restart: unless-stopped

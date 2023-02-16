@@ -1,5 +1,2 @@
 *.env
-homeassistant
-pihole
-tailscale
-npm
+mount
