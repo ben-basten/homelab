@@ -30,3 +30,19 @@ services:
       - './mount/pihole/etc-pihole:/etc/pihole'
       - './mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
     restart: unless-stopped
+  syncthing:
+    image: syncthing/syncthing
+    container_name: syncthing
+    hostname: syncthing
+    env_file:
+      - syncthing.env
+    volumes:
+      - './mount/syncthing:/var/syncthing'
+      - './mount:/var/raspberrypi'
+#    ports:
+#      - 8384:8384 # Web UI
+#      - 22000:22000/tcp # TCP file transfers
+#      - 22000:22000/udp # QUIC file transfers
+#      - 21027:21027/udp # Receive local discovery broadcasts
+    network_mode: host # use this instead of ports for easier local network discovery
+    restart: unless-stopped
