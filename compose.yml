@@ -33,10 +33,9 @@ services:
   syncthing:
     image: syncthing/syncthing
     container_name: syncthing
-    hostname: syncthing-raspberrypi
-    environment:
-      - PUID=1000
-      - PGID=1000
+    hostname: syncthing
+    env_file:
+      - syncthing.env
     volumes:
       - './mount/syncthing:/var/syncthing'
       - './mount:/var/raspberrypi'
