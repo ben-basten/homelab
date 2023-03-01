@@ -14,7 +14,7 @@ services:
     network_mode: host
   pihole:
     container_name: pihole
-    image: pihole/pihole:2023.02.2
+    image: pihole/pihole
     ports:
       - "53:53/tcp"
       - "53:53/udp"
@@ -46,3 +46,17 @@ services:
 #      - 21027:21027/udp # Receive local discovery broadcasts
     network_mode: host # use this instead of ports for easier local network discovery
     restart: unless-stopped
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      TZ: 'America/Detroit'
+      # When the job will run, 6 character cron.
+      WATCHTOWER_SCHEDULE: "0 0 3 * * MON,WED,FRI"
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_NOTIFICATION_REPORT: "true"
+      DOCKER_TLS_VERIFY: "true"
+    env_file:
+      - watchtower.env
