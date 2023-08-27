@@ -23,6 +23,7 @@ services:
       TZ: 'America/Detroit'
       PIHOLE_DNS_: '9.9.9.9;149.112.112.112'
       WEBTHEME: 'default-dark'
+      TEMPERATUREUNIT: 'f'
     env_file:
       - pihole.env
     volumes:
