@@ -21,9 +21,8 @@ services:
       - "80:80/tcp"
     environment:
       TZ: 'America/Detroit'
-    dns:
-      # Specify Quad9 DNS server to fix DNS issues while updating adlists ("Update Gravity")
-      - 9.9.9.9
+      PIHOLE_DNS_: '9.9.9.9;149.112.112.112'
+      WEBTHEME: 'default-dark'
     env_file:
       - pihole.env
     volumes:
