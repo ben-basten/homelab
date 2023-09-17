@@ -12,6 +12,8 @@ services:
     restart: unless-stopped
     privileged: false
     network_mode: host
+    env_file:
+      - homeassistant.env
   pihole:
     container_name: pihole
     image: pihole/pihole
