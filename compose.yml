@@ -31,7 +31,7 @@ services:
       - './mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
     restart: unless-stopped
   syncthing:
-    image: syncthing/syncthing:rc
+    image: syncthing/syncthing
     container_name: syncthing
     hostname: syncthing
     env_file:
