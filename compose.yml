@@ -20,7 +20,7 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "80:80/tcp"
+      - "9089:80/tcp"
     environment:
       TZ: 'America/Detroit'
       PIHOLE_DNS_: '9.9.9.9;149.112.112.112'
