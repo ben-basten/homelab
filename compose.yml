@@ -14,24 +14,6 @@ services:
     network_mode: host
     env_file:
       - homeassistant.env
-  pihole:
-    container_name: pihole
-    image: pihole/pihole
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "9089:80/tcp"
-    environment:
-      TZ: 'America/Detroit'
-      PIHOLE_DNS_: '9.9.9.9;149.112.112.112'
-      WEBTHEME: 'default-dark'
-      TEMPERATUREUNIT: 'f'
-    env_file:
-      - pihole.env
-    volumes:
-      - './mount/pihole/etc-pihole:/etc/pihole'
-      - './mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
-    restart: unless-stopped
   syncthing:
     image: syncthing/syncthing
     container_name: syncthing
