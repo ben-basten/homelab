@@ -1,9 +1,9 @@
 # homelab
 
-## Running tailscale VPN
+Version control for a couple of helpful services for around home.
 
-Command to start VPN with DNS: `sudo tailscale up --accept-dns --advertise-routes=192.168.x.x/32`
+## Overview
 
-* Make sure to replace the IP address with the local IP of the server
-* advertise-routes: setup a subnet router to the server IP
-* accept-dns: allow DNS requests to be made over VPN
+* **Watchtower**: automatically checks for container updates on a schedule, and can update and send webhook notifications if they're configured.
+* **Home Assistant**: open source platform to control home devices and services.
+* **syncthing**: syncs files between 2 or more devices realtime, which can be helpful for backups.
