@@ -1,2 +1,2 @@
 *.env
-mount
+.DS_STORE
