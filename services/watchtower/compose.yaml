@@ -15,3 +15,4 @@ services:
       DOCKER_TLS_VERIFY: "true"
     env_file:
       - .env
+    restart: unless-stopped
