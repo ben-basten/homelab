@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      TZ: 'America/Detroit'
+      # When the job will run, 6 character cron.
+      WATCHTOWER_SCHEDULE: "0 0 3 * * MON,WED,FRI"
+      WATCHTOWER_CLEANUP: "true"
+      WATCHTOWER_NOTIFICATION_REPORT: "true"
+      DOCKER_TLS_VERIFY: "true"
+    env_file:
+      - .env

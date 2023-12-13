@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  home-assistant:
+    extends:
+      file: services/home-assistant/compose.yaml
+      service: home-assistant
+    devices:
+      # Passing through Zigbee receiver into Docker container
+      - /dev/ttyACM0:/dev/ttyUSB0
+  syncthing:
+    extends:
+      file: services/syncthing/compose.yaml
+      service: syncthing
+    volumes:
+      - './mount:/var/docker-mount'
+  watchtower:
+    extends:
+      file: services/watchtower/compose.yaml
+      service: watchtower
+    environment:
+      WATCHTOWER_SCHEDULE: "0 0 3 * * MON,WED,FRI"

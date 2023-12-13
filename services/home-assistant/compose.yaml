@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  home-assistant:
+    container_name: home-assistant
+    image: "ghcr.io/home-assistant/home-assistant:latest"
+    volumes:
+      - '../../mount/home-assistant/config:/config'
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: false
+    network_mode: host
+    env_file:
+      - .env

@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  pihole:
+    extends:
+      file: services/pihole/compose.yaml
+      service: pihole
+  syncthing:
+    extends:
+      file: services/syncthing/compose.yaml
+      service: syncthing
+    volumes:
+      - './mount:/var/docker-mount'
+  uptime-kuma:
+    extends:
+      file: services/uptime-kuma/compose.yaml
+      service: uptime-kuma
+  watchtower:
+    extends:
+      file: services/watchtower/compose.yaml
+      service: watchtower
+    environment:
+      WATCHTOWER_SCHEDULE: "0 0 3 * * TUE,THU,SAT"
