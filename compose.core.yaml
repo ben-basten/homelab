@@ -21,3 +21,5 @@ services:
       service: watchtower
     environment:
       WATCHTOWER_SCHEDULE: "0 0 3 * * TUE,THU,SAT"
+include:
+  - services/immich/compose.yaml
