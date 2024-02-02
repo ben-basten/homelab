@@ -1,6 +1,6 @@
 # homelab
 
-Version control for a couple of helpful services for around home.
+Version control for a couple of helpful services for around the home.
 
 ## Overview
 
