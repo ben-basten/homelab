@@ -20,6 +20,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
+    user: "${PUID}:${PGID}"
     ports:
       - 2283:3001
     depends_on:
@@ -36,9 +37,11 @@ services:
     command: [ "start.sh", "microservices" ]
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
+      - ${MOUNT_LOCATION}/geocoding-dump:/usr/src/app/.reverse-geocoding-dump
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
+    user: "${PUID}:${PGID}"
     depends_on:
       - redis
       - database
@@ -57,11 +60,13 @@ services:
       # - model-cache:/cache
     env_file:
       - .env
+    user: "${PUID}:${PGID}"
     restart: always
 
   redis:
     container_name: immich_redis
     image: redis:6.2-alpine@sha256:afb290a0a0d0b2bd7537b62ebff1eb84d045c757c1c31ca2ca48c79536c0de82
+    user: "${PUID}:${PGID}"
     restart: always
 
   database:
@@ -69,6 +74,7 @@ services:
     image: tensorchord/pgvecto-rs:pg14-v0.1.11@sha256:0335a1a22f8c5dd1b697f14f079934f5152eaaa216c09b61e293be285491f8ee
     env_file:
       - .env
+    user: "${PUID}:${PGID}"
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USERNAME}
