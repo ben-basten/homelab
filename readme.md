@@ -36,6 +36,10 @@ Alternatively, there are convenience scripts to simplify this process:
 
 `./[stack].sh <up|down|pull|other-compose-command>`
 
+If additional environment variables are required for the stack of services, for example to mount a private volume in the file system to Syncthing, the `--env-file` option can be used. For example:
+
+`./[stack].sh --env-file core.env <up|down|pull|other-compose-command>`
+
 ## Formatting
 
 This project uses "[EditorConfig](https://editorconfig.org/)" to maintain consistent formatting.
