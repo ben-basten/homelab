@@ -17,6 +17,7 @@ services:
     command: [ "start.sh", "immich" ]
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
+      - ${EXTERNAL_LOCATION}:/mnt/photo-library:ro
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
@@ -38,6 +39,7 @@ services:
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
       - ${MOUNT_LOCATION}/geocoding-dump:/usr/src/app/.reverse-geocoding-dump
+      - ${EXTERNAL_LOCATION}:/mnt/photo-library:ro
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
@@ -66,7 +68,6 @@ services:
   redis:
     container_name: immich_redis
     image: redis:6.2-alpine@sha256:afb290a0a0d0b2bd7537b62ebff1eb84d045c757c1c31ca2ca48c79536c0de82
-    user: "${PUID}:${PGID}"
     restart: always
 
   database:
