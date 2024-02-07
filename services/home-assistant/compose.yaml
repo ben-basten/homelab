@@ -7,8 +7,7 @@ services:
     volumes:
       - '../../mount/home-assistant/config:/config'
       - /etc/localtime:/etc/localtime:ro
+    # user: "${PUID}:${PGID}"
     restart: unless-stopped
-    privileged: false
+    privileged: true
     network_mode: host
-    env_file:
-      - .env

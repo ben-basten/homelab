@@ -15,6 +15,7 @@ services:
       TEMPERATUREUNIT: 'f'
     env_file:
       - .env
+    # user: "${PUID}:${PGID}"
     volumes:
       - '../../mount/pihole/etc-pihole:/etc/pihole'
       - '../../mount/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
