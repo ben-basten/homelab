@@ -22,6 +22,8 @@ services:
     env_file:
       - .env
     user: "${PUID}:${PGID}"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     ports:
       - 2283:3001
     depends_on:
@@ -44,6 +46,8 @@ services:
     env_file:
       - .env
     user: "${PUID}:${PGID}"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     depends_on:
       - redis
       - database
@@ -63,11 +67,15 @@ services:
     env_file:
       - .env
     user: "${PUID}:${PGID}"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     restart: always
 
   redis:
     container_name: immich_redis
     image: redis:6.2-alpine@sha256:afb290a0a0d0b2bd7537b62ebff1eb84d045c757c1c31ca2ca48c79536c0de82
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     restart: always
 
   database:
@@ -76,6 +84,8 @@ services:
     env_file:
       - .env
     user: "${PUID}:${PGID}"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USERNAME}
